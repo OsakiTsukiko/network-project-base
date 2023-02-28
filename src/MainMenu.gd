@@ -7,6 +7,7 @@ onready var ip_input: Node = $CenterContainer/VBoxContainer/GridContainer/IPInpu
 onready var port_input: Node = $CenterContainer/VBoxContainer/GridContainer/PortInput
 
 func _ready():
+	Gamestate.connect("global_error", self, "_global_error")
 	error_label.visible = false
 
 func do_error(msg: String):
@@ -22,7 +23,7 @@ func _on_ConnectBTN_pressed():
 		do_error("Please fill all fields!")
 		return
 	
-	# Connect
+	Gamestate.init_client(username, ip, port)
 
 func _on_HostBTN_pressed():
 	var username: String = username_input.text
@@ -32,4 +33,7 @@ func _on_HostBTN_pressed():
 		do_error("Please fill the username and port fields!")
 		return
 	
-	# Host
+	Gamestate.init_server(username, port)
+
+func _global_error(msg: String):
+	do_error(msg)
