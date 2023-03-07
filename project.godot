@@ -18,6 +18,18 @@ config/icon="res://icon.png"
 
 Gamestate="*res://src/Gamestate.tscn"
 
+[debug]
+
+multirun/number_of_windows=2
+multirun/window_distance=1270
+multirun/add_custom_args=true
+multirun/first_window_args="listen"
+multirun/other_window_args="join"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/multirun/plugin.cfg" )
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
