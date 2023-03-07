@@ -14,3 +14,7 @@ func _refresh_player_list():
 	player_list_node.clear()
 	for player in Gamestate.player_list:
 		player_list_node.add_item(player.username, null, false)
+
+
+func _on_StartBTN_pressed():
+	Gamestate.start_game()

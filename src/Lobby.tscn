@@ -33,3 +33,5 @@ margin_top = 304.0
 margin_right = 500.0
 margin_bottom = 324.0
 text = "Start"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/StartBTN" to="." method="_on_StartBTN_pressed"]

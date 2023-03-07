@@ -48,6 +48,10 @@ func init_client(username: String, game_ip: String, game_port: int) -> void:
 	peer.create_client(game_ip, game_port)
 	get_tree().network_peer = peer
 
+func start_game():
+	if (get_tree().is_network_server()):
+		rpc("start_game_rpc")
+
 func _network_peer_connected(id: int) -> void:
 	print(id, " connected")
 	if (get_tree().is_network_server() && !in_match):
@@ -98,3 +102,8 @@ remotesync func player_disconnected(peer_id: int):
 				if (in_match):
 					# handle in match disconnect
 					pass
+
+remotesync func start_game_rpc():
+	if (get_tree().get_rpc_sender_id() == 1):
+		# START GAME
+		pass
